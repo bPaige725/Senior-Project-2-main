@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Make a playlist{% endblock %}
+
+{% block content %}
+<br>
+
+    {% if playlists %}
+        {% for playlist in playlists %}
+        <table class="table table-bordered", aria-label="{{ playlist.name }}">
+            <tr class="table secondary">
+                <thead>{{ playlist.name }} | {{ playlist.description }}</thead>
+                <tr>    
+                    <td>Name</td>
+                    {% for name in playlist.song_names %}
+                    {% if name != None %}
+                    <td>{{ name }}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>    
+                    <td>Artist(s)</td>
+                    {% for artists in playlist.song_artists %}
+                    {% if artists != None %}
+                    <td>{{ artists }}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>    
+                    <td>Duration</td>
+                    {% for durations in playlist.song_duration %}
+                    {% if durations != None %}
+                    <td>{{ durations }}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Play</td>
+                    {% for id in playlist.parse_ids %}
+                    {% if id != "" %}
+                    <td><iframe src="https://open.spotify.com/embed/track/{{ id }}" width="300" 
+                        height="80" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                    </iframe></td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td></td>
+                    {% for id in playlist.parse_ids %}
+                    {% if id != "" %}
+                    <td><form action='/remove_song/', method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="playlist_name" value="{{ playlist.name }}">
+                        <input type="hidden" name="song_id" value="{{ id }}">
+                        <button class="btn btn-outline-secondary" type="submit">Remove</button>
+                    </form></td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td><a href="{% url 'delete_playlist' playlist.name %}">Delete</a></td>
+                </tr>
+            </tr>
+        </table>
+        {% endfor %}
+    {% endif %}
+
+<form class="d-flex" method="POST">
+    {% csrf_token %}
+    <input class="form-control me-2" type="text" placeholder="New Playlist" 
+        aria-label="Name" name="name">
+    <input class="form-control me-2" type="text" placeholder="My awesome playlist"
+        aria-label="Description" name="description">
+    <input type="hidden" name="songs">
+    <button class="btn btn-outline-secondary" type="submit">Create new playlist</button>
+</form>
+{% endblock %}

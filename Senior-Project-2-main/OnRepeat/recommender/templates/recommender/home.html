@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HOME</title>
+    <style>
+        .container2 {
+            border: 12px solid darkred;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .col1 {
+            border: 4px solid darkred;
+            height: 200px;
+            text-align: center;
+        }
+
+        #songs-today {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .search-text-field {
+            width: 30%;
+            height: 50px;
+            font-size: larger;
+        }
+
+        .search-section {
+            text-align: center;
+        }
+
+        .search-button {
+            width: 30%;
+            height: 50px;
+        }
+
+        .lucky-button {
+            width: 30%;
+            height: 50px;
+        }
+
+        .breaker {
+            border: 4px solid darkred;
+        }
+    </style>
+</head>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissable" role="alert">
+    <button class=" btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {{ message }}
+</div>
+{% endfor%}
+
+{% endif %}
+
+
+<body>
+    <form method='post' action="">
+
+
+        {% csrf_token %}
+        <br>
+        <h2 class="title">Home</h2>
+        </br></br>
+        <div class="container2">
+            <div class="row">
+                <div class="col" id="songs-today">
+                    Songs OnRepeat Today
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col1">
+                    First Song
+                    </br></br></br>
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="col col1">
+                    Second Song
+                    </br></br></br>
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="col col1">
+                    Third Song
+                    </br></br></br>
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br></br>
+
+        <div class="search-section">
+            <button type="button" class="btn btn-outline-danger search-button">Search</button>
+            <input type="text" class="search-text-field">
+            <button type="button" class="btn btn-outline-primary lucky-button">I'm Feeling Lucky</button>
+        </div>
+
+        </br></br></br></br>
+        <h1 class="breaker"></h1>
+        </br></br></br></br>
+        
+
+    
+    </form>
+
+
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header">
+                    <h5>
+                        <button class="btn btn-outline-danger" data-toggle="collapse" data-target="#collapseOne">
+                                Main Boards
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="container2">
+                            <div class="row">
+                                <div class="col col1">
+                                    Message Board 1
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="col col1">
+                                    Message Board 2
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="col col1">
+                                    Message Board 3
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>
+                        <button class="btn btn btn-outline-danger" data-toggle="collapse" data-target="#collapseTwo">
+                                New Albums
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="container2">
+                            <div class="row">
+                                <div class="col col1">
+                                    Album 1
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="col col1">
+                                    Album 2
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="col col1">
+                                    Album 3
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5>
+                        <button class="btn btn btn-outline-danger" data-toggle="collapse" data-target="#collapseThree">
+                                Top Rated Albums Today
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="container2">
+                            <div class="row">
+                                <div class="col col1">
+                                    Top Album 1
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="col col1">
+                                    Top Album 2
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="col col1">
+                                    Top Album 3
+                                    </br></br></br>
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+</body>
+
+</html>
+
+{% endblock %}

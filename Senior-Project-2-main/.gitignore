@@ -1,0 +1,3 @@
+# Ignore file for OnRepeat Senior Project
+#Virtual environment folder
+.OnRepeat/myenvironment/*
